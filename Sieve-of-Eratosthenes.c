@@ -26,7 +26,8 @@ void Sieve_of_Eratosthenes (int n){ // Решето Эратосфена
 
 int main(void){
     int n;
-    scanf("%d", &n);
-    Sieve_of_Eratosthenes(n);
+    if (scanf("%d", &n) == 1 && n >= 2){
+        Sieve_of_Eratosthenes(n);
+    }
     return 0;
 }

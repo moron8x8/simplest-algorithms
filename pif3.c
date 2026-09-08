@@ -41,8 +41,8 @@ void deepMatrix(Matrix3x1 parent, int nowdepth, int maxdepth){
 int main(void){
     Matrix3x1 base = {{{3}, {4}, {5}}};
     int n;
-    scanf("%d", &n);
-    deepMatrix(base, 0, n);
-
+    if (scanf("%d", &n) == 1 && n >= 0) {
+        deepMatrix(base, 0, n);
+    }
     return 0;
 }
