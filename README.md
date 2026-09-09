@@ -14,6 +14,7 @@ The project will expand over time.
 | **1** | `matrixfib.c` | Fast Fibonacci number computation using matrix exponentiation |
 | **2** | `Sieve-of-Eratosthenes.c` | Finding all prime numbers up to a specified limit $n$ |
 | **3** | `pif3.c` | Ternary tree generation of primitive Pythagorean triples |
+| **4** | `RLE.c` | Run-Length Encoding (RLE) for text compression |
 
 ---
 
@@ -62,9 +63,8 @@ Generates a ternary (three-branch) tree of **primitive Pythagorean triples** bas
     The process continues recursively up to a maximum depth $n$.
 *   **Output format:** The program prints comma-separated values mapping the parent node to its children (`parent;child`).
 
----
 
-## 📐 Berggren Matrices for Pythagorean Triples
+📐 Berggren Matrices for Pythagorean Triples
 
 The following constant $3 \times 3$ matrices are utilized to generate child nodes inside `pif3.c`:
 
@@ -85,3 +85,27 @@ C = \begin{pmatrix}
 -2 & 2 & 3 
 \end{pmatrix}
 $$
+
+### 4. Run-Length Encoding (`RLE.c`)
+
+Compresses a string by replacing consecutive sequences of identical characters with the character followed by the number of repetitions.
+
+*   **How it works:** The algorithm scans the input string from left to right. When a sequence of identical characters ends, the character and its repetition count are written to the result string.
+
+*   **Example:**
+
+    ```
+    Input:  AAABBCCCZ
+    Output: A3B2C3Z1
+    ```
+
+*   **Output format:** Each group is represented as:
+
+    ```
+    character + number of repetitions
+    ```
+
+*   **Complexity:** The algorithm processes each input character once, so its time complexity is $O(n)$, where $n$ is the input length.
+
+*   **Memory usage:** The result buffer requires additional memory for the encoded string. In the worst case, its size is approximately `2n + 1`.
+---
