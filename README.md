@@ -15,6 +15,8 @@ The project will expand over time.
 | **2** | `Sieve-of-Eratosthenes.c` | Finding all prime numbers up to a specified limit $n$ |
 | **3** | `pif3.c` | Ternary tree generation of primitive Pythagorean triples |
 | **4** | `RLE.c` | Run-Length Encoding (RLE) for text compression |
+| **5** | `BubbleSort.c` | Bubble Sort algorithm with an early-exit flag |
+
 
 ---
 
@@ -108,4 +110,15 @@ Compresses a string by replacing consecutive sequences of identical characters w
 *   **Complexity:** The algorithm processes each input character once, so its time complexity is $O(n)$, where $n$ is the input length.
 
 *   **Memory usage:** The result buffer requires additional memory for the encoded string. In the worst case, its size is approximately `2n + 1`.
+
+### 5. Bubble Sort (`BubbleSort.c`)
+
+*   **How it works:** 
+    1. The program reads an integer $n$, followed by $n$ elements to populate a Variable-Length Array `arr[n]`.
+    2. It prints the original array, executes the sorting routine, and then outputs the final sorted array.
+    3. The `BubbleSort` function uses nested loops to compare adjacent elements and swap them if they are in the wrong order (`a[i] > a[i + 1]`).
+*   **Optimization:** A `flag` variable tracks whether any swaps occurred during an inner loop pass. If a full pass completes with `flag == 1`, the array is already fully sorted, and the algorithm triggers an early `break` to save redundant operations.
+*   **Complexity:** 
+    *   **Worst-case / Average-case Time:** $O(n^2)$ when the array is reversed or unsorted.
+    *   **Best-case Time:** $O(n)$ when the input array is already sorted (thanks to the optimization flag).
 ---
