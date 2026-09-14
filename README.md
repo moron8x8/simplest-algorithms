@@ -16,6 +16,7 @@ The project will expand over time.
 | **3** | `pif3.c` | Ternary tree generation of primitive Pythagorean triples |
 | **4** | `RLE.c` | Run-Length Encoding (RLE) for text compression |
 | **5** | `BubbleSort.c` | Bubble Sort algorithm with an early-exit flag |
+| **6** | `SelectionSort.c` | Selection Sort algorithm |
 
 
 ---
@@ -121,4 +122,15 @@ Compresses a string by replacing consecutive sequences of identical characters w
 *   **Complexity:** 
     *   **Worst-case / Average-case Time:** $O(n^2)$ when the array is reversed or unsorted.
     *   **Best-case Time:** $O(n)$ when the input array is already sorted (thanks to the optimization flag).
+  
+### 6. Selection Sort (`SelectionSort.c`)
+An implementation of the **Selection Sort** algorithm.
+
+*   **How it works:** 
+    1. The program safely reads an integer $n$. If the input is invalid or $n \le 0$, it terminates early to prevent undefined behavior.
+    2. A Variable-Length Array (VLA) `a[n]` is populated with integers, backed by `scanf` success checks.
+    3. The `SelectionSort` function divides the array into a sorted and an unsorted region.
+    4. In each pass, it scans the unsorted part to find the minimum element. If the minimum element is not already at the starting position (`min != i`), it swaps it into its correct place.
+
+
 ---
