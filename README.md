@@ -17,6 +17,7 @@ The project will expand over time.
 | **4** | `RLE.c` | Run-Length Encoding (RLE) for text compression |
 | **5** | `BubbleSort.c` | Bubble Sort algorithm with an early-exit flag |
 | **6** | `SelectionSort.c` | Selection Sort algorithm |
+| **7** | `InsertionSort.c` | Insertion Sort algorithm |
 
 
 ---
@@ -132,5 +133,13 @@ An implementation of the **Selection Sort** algorithm.
     3. The `SelectionSort` function divides the array into a sorted and an unsorted region.
     4. In each pass, it scans the unsorted part to find the minimum element. If the minimum element is not already at the starting position (`min != i`), it swaps it into its correct place.
 
+### 7. Insertion Sort (`InsertionSort.c`)
+An implementation of the **Insertion Sort** algorithm, which builds the final sorted array one item at a time.
+
+*   **How it works:** 
+    1. The program  reads the array size $n$ and its elements.
+    2. The `InsertionSort` function iterates through the array from left to right.
+    3. For each element (`nonsorted`), it scans backwards through the sorted sub-array to find its correct position.
+    4. Elements greater than the current key are shifted one position to the right to clear space, and the key is placed in its valid sorted slot.
 
 ---
