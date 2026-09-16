@@ -18,6 +18,7 @@ The project will expand over time.
 | **5** | `BubbleSort.c` | Bubble Sort algorithm with an early-exit flag |
 | **6** | `SelectionSort.c` | Selection Sort algorithm |
 | **7** | `InsertionSort.c` | Insertion Sort algorithm |
+| **8** | `MergeSort.c` | Merge Sort algorithm using a divide-and-conquer strategy |
 
 
 ---
@@ -142,4 +143,11 @@ An implementation of the **Insertion Sort** algorithm, which builds the final so
     3. For each element (`nonsorted`), it scans backwards through the sorted sub-array to find its correct position.
     4. Elements greater than the current key are shifted one position to the right to clear space, and the key is placed in its valid sorted slot.
 
+### 8. Merge Sort (`MergeSort.c`)
+An implementation of the **Merge Sort** algorithm, which uses the divide-and-conquer paradigm to sort an array efficiently.
+
+*   **How it works:** 
+    1. The program  reads the array size $n$ and its elements.
+    2. The `MergeSort` function recursively splits the array into two halves until sub-arrays of size 1 or 0 are reached.
+    3. The `merge` function then combines the sorted sub-arrays back together into a single sorted unit using a temporary buffer.
 ---
