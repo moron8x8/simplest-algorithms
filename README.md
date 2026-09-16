@@ -19,6 +19,7 @@ The project will expand over time.
 | **6** | `SelectionSort.c` | Selection Sort algorithm |
 | **7** | `InsertionSort.c` | Insertion Sort algorithm |
 | **8** | `MergeSort.c` | Merge Sort algorithm using a divide-and-conquer strategy |
+| **9** | `BinarySearch.c` | Recursive and Iterative Binary Search algorithms  |
 
 
 ---
@@ -150,4 +151,12 @@ An implementation of the **Merge Sort** algorithm, which uses the divide-and-con
     1. The program  reads the array size $n$ and its elements.
     2. The `MergeSort` function recursively splits the array into two halves until sub-arrays of size 1 or 0 are reached.
     3. The `merge` function then combines the sorted sub-arrays back together into a single sorted unit using a temporary buffer.
+
+### 9. Binary Search (`BinarySearch.c`)
+An implementation of the **Binary Search** algorithm, showcasing both iterative and recursive approaches to search for a target element within a sorted array.
+
+*   **How it works:** 
+    1. The program read the sorted array size n, its elements, and the target number (`searchednum`).
+    2. **Iterative Approach (`BinSearchLeftRight`):** Uses a `while` loop with moving `left` and `right` pointers to shrink the search space by half each iteration.
+    3. **Recursive Approach (`BinSearchRecursion`):** Achieves the same divide-and-conquer logic through explicit self-invocation, passing updated boundaries down the call stack.
 ---
