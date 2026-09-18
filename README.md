@@ -20,6 +20,7 @@ The project will expand over time.
 | **7** | `InsertionSort.c` | Insertion Sort algorithm |
 | **8** | `MergeSort.c` | Merge Sort algorithm using a divide-and-conquer strategy |
 | **9** | `BinarySearch.c` | Recursive and Iterative Binary Search algorithms  |
+| **10** | `prime_factorization.c` | Prime factorization of an integer |
 
 
 ---
@@ -159,4 +160,13 @@ An implementation of the **Binary Search** algorithm, showcasing both iterative 
     1. The program read the sorted array size n, its elements, and the target number (`searchednum`).
     2. **Iterative Approach (`BinSearchLeftRight`):** Uses a `while` loop with moving `left` and `right` pointers to shrink the search space by half each iteration.
     3. **Recursive Approach (`BinSearchRecursion`):** Achieves the same divide-and-conquer logic through explicit self-invocation, passing updated boundaries down the call stack.
+
+### 10. Prime Factorization (`prime_factorization.c`)
+Implementation to compute the **prime factorization of an integer**.
+
+*   **How it works:** 
+    1. The program isolates the smallest prime number (\(2\)) inside a `while` loop, extracting all even factors from the number completely.
+    2. The algorithm then iterates through an optimized `for` loop executing only odd numbers from \(3\) up to \(\sqrt{num}\). If any odd number completely divides the remaining value, it is printed and divided recursively.
+    3. **Mathematical Optimization:** If the remaining value of `num` after loop bounds is greater than \(1\), it is inherently a prime number itself and is printed as the final factor.
+
 ---
