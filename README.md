@@ -21,6 +21,8 @@ The project will expand over time.
 | **8** | `MergeSort.c` | Merge Sort algorithm using a divide-and-conquer strategy |
 | **9** | `BinarySearch.c` | Recursive and Iterative Binary Search algorithms  |
 | **10** | `prime_factorization.c` | Prime factorization of an integer |
+| **11** | `find_pair_sum.c` | Two-Sum problem solver using Merge Sort and a Two-Pointer technique |
+
 
 
 ---
@@ -169,4 +171,11 @@ Implementation to compute the **prime factorization of an integer**.
     2. The algorithm then iterates through an optimized `for` loop executing only odd numbers from \(3\) up to \(\sqrt{num}\). If any odd number completely divides the remaining value, it is printed and divided recursively.
     3. **Mathematical Optimization:** If the remaining value of `num` after loop bounds is greater than \(1\), it is inherently a prime number itself and is printed as the final factor.
 
+### 11. Two-Sum Pair Solver (`find_pair_sum.c`)
+An efficient solver for the **Two-Sum problem** using a combination of sorting and a two-pointer approach.
+
+*   **How it works:** 
+    1. **Data Structure:** Uses a custom `element` structure to store both the integer `value` and its original 0-based `index` so that position data is not lost during sorting.
+    2. **Sorting Phase:** Applies the `MergeSort` routine to sort the elements by value in \(O(n \log n)\) time.
+    3. **Two-Pointer Scan:** Places two pointers (`right` at the beginning and `left` at the end) of the sorted array. The pointers converge based on the current sum relative to the `target`, finding the matching pair in a single \(O(n)\) linear scan.
 ---
