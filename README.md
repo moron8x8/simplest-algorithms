@@ -22,6 +22,7 @@ The project will expand over time.
 | **9** | `BinarySearch.c` | Recursive and Iterative Binary Search algorithms  |
 | **10** | `prime_factorization.c` | Prime factorization of an integer |
 | **11** | `find_pair_sum.c` | Two-Sum problem solver using Merge Sort and a Two-Pointer technique |
+| **12** | `matrixuppertriangular.c` | Gaussian elimination method for matrix triangularization |
 
 
 
@@ -178,4 +179,16 @@ An efficient solver for the **Two-Sum problem** using a combination of sorting a
     1. **Data Structure:** Uses a custom `element` structure to store both the integer `value` and its original 0-based `index` so that position data is not lost during sorting.
     2. **Sorting Phase:** Applies the `MergeSort` routine to sort the elements by value in \(O(n \log n)\) time.
     3. **Two-Pointer Scan:** Places two pointers (`right` at the beginning and `left` at the end) of the sorted array. The pointers converge based on the current sum relative to the `target`, finding the matching pair in a single \(O(n)\) linear scan.
+
+### 12. Matrix Upper Triangularization (`matrixuppertriangular.c`)
+Transforms a square matrix into an **upper triangular matrix** using Gaussian elimination row operations.
+
+*   **How it works:** 
+    1. The program  reads the matrix size `len`. 
+    2. A Variable-Length 2D Array `arr[len][len]` is populated with double-precision floating-point numbers from standard input.
+    3. The `gauss_method` function iterates down through each pivot row. For every row below the active pivot, it calculates a structural multiplier factor k.
+    
+    4. The algorithm then subtracts from the current lower row to zero out the elements below the main diagonal, building an upper triangular shape.
+    5. The final matrix is printed out with values rounded to two decimal places.
+
 ---
