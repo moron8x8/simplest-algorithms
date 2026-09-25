@@ -23,6 +23,7 @@ The project will expand over time.
 | **10** | `prime_factorization.c` | Prime factorization of an integer |
 | **11** | `find_pair_sum.c` | Two-Sum problem solver using Merge Sort and a Two-Pointer technique |
 | **12** | `matrixuppertriangular.c` | Gaussian elimination method for matrix triangularization |
+| **13** | `BFS.c` | Breadth-First Search (BFS) algorithm on a graph using static arrays |
 
 
 
@@ -191,4 +192,36 @@ Transforms a square matrix into an **upper triangular matrix** using Gaussian el
     4. The algorithm then subtracts from the current lower row to zero out the elements below the main diagonal, building an upper triangular shape.
     5. The final matrix is printed out with values rounded to two decimal places.
 
+### 13. Breadth-First Search (`BFS.c`)
+An implementation of the **Breadth-First Search (BFS)** algorithm to traverse or search a graph level by level.
+
+*   **How it works:** 
+    1. The program utilizes custom `edge`, `vertex`, and `graph` structures, storing relations using static adjacency arrays embedded within each vertex structure.
+    2. It reads the number of vertices V and edges from the standard input, constructing the directed graph sequentially.
+    3. An array-based queue (`queue`) and a traversal flag tracker (`visited`) are initialized. The algorithm pushes the initial starting vertex into the queue and marks it as visited.
+    4. While the queue is not empty, the current node is popped, printed, and all its unvisited direct neighbors are discovered, marked as visited, and appended to the queue.
+
+*   **Input format:** 
+    ```
+    [Total Vertices] [Total Edges]
+    [Source Vertex 1] [Destination Vertex 1]
+    [Source Vertex 2] [Destination Vertex 2]
+    ...
+    [Starting Vertex for BFS]
+    ```
+
+*   **Example:**
+    For a graph with 4 vertices (0, 1, 2, 3) and 4 directed edges (0→1, 0→2, 1→3, 2→3), starting the traversal from vertex 0:
+    ```
+    Input:
+    4 4
+    0 1
+    0 2
+    1 3
+    2 3
+    0
+
+    Output:
+    0 1 2 3 
+    ```
 ---
