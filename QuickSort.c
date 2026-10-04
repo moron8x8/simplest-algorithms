@@ -9,6 +9,8 @@ void swap(int *x, int *y)
 
 int partition(int *a, int low, int hight)
 {
+  int mid = low + (hight - low) / 2;
+  swap(&a[mid], &a[hight]);
   int pivot = a[hight];
   int i = low;
   for (int j = low; j < hight; j++){
