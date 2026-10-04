@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 
-void merge(int size, int mid, int *a){
+static void merge(int size, int mid, int *a){
 
     int temp[size];
 
@@ -38,8 +38,8 @@ void MergeSort(int size, int *a){
 
     int mid = size / 2;
 
-    MergeSort(mid, a); // left part
-    MergeSort(size - mid, a + mid); // right part
+    MergeSort(mid, a);
+    MergeSort(size - mid, a + mid);
 
     merge(size, mid, a);
 }

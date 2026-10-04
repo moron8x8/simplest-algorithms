@@ -1,13 +1,13 @@
 #include <stdio.h>
 
-void swap(int *x, int *y)
+static void swap(int *x, int *y)
 {
   int temp = *x;
   *x = *y;
   *y = temp;
 }
 
-int partition(int *a, int low, int hight)
+static int partition(int *a, int low, int hight)
 {
   int mid = low + (hight - low) / 2;
   swap(&a[mid], &a[hight]);
@@ -24,7 +24,7 @@ int partition(int *a, int low, int hight)
   return i;
 }
 
-void qs(int *a, int low, int hight)
+static void qs(int *a, int low, int hight)
 {
   while (low < hight) {
     if (low >= hight) return;
