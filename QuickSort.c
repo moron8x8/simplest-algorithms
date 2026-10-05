@@ -40,7 +40,7 @@ static void qs(int *a, int low, int hight)
   }
 }
 
-void quick_sort(int n, int *a){
+void QuickSort(int n, int *a){
   qs(a, 0, n - 1);
 }
 
@@ -57,7 +57,7 @@ int main(void){
         printf("%d ", arr[i]);
     }
     printf("\n");
-    quick_sort(n, arr);
+    QuickSort(n, arr);
 
     for(int i = 0; i < n; i++){
         printf("%d ", arr[i]);

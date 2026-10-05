@@ -19,11 +19,12 @@ The project will expand over time.
 | **6** | `SelectionSort.c` | Selection Sort algorithm |
 | **7** | `InsertionSort.c` | Insertion Sort algorithm |
 | **8** | `MergeSort.c` | Merge Sort algorithm using a divide-and-conquer strategy |
-| **9** | `BinarySearch.c` | Recursive and Iterative Binary Search algorithms  |
+| **9** | `BinSearch.c` | Recursive and Iterative Binary Search algorithms  |
 | **10** | `prime_factorization.c` | Prime factorization of an integer |
 | **11** | `find_pair_sum.c` | Two-Sum problem solver using Merge Sort and a Two-Pointer technique |
 | **12** | `matrixuppertriangular.c` | Gaussian elimination method for matrix triangularization |
 | **13** | `BFS.c` | Breadth-First Search (BFS) algorithm on a graph using static arrays |
+| **14** | `QuickSort.c` | Quick Sort algorithm |
 
 
 
@@ -157,7 +158,7 @@ An implementation of the **Merge Sort** algorithm, which uses the divide-and-con
     2. The `MergeSort` function recursively splits the array into two halves until sub-arrays of size 1 or 0 are reached.
     3. The `merge` function then combines the sorted sub-arrays back together into a single sorted unit using a temporary buffer.
 
-### 9. Binary Search (`BinarySearch.c`)
+### 9. Binary Search (`BinSearch.c`)
 An implementation of the **Binary Search** algorithm, showcasing both iterative and recursive approaches to search for a target element within a sorted array.
 
 *   **How it works:** 
@@ -224,4 +225,13 @@ An implementation of the **Breadth-First Search (BFS)** algorithm to traverse or
     Output:
     0 1 2 3 
     ```
----
+
+### 14. Quick Sort (`QuickSort.c`)
+An implementation of the **Quick Sort** algorithm: the array is partitioned around a pivot element, and both parts are sorted independently.
+
+*   **How it works:** 
+    1. The program reads the array size $n$ and its elements.
+    2. **Pivot choice:** the `partition` function takes the middle element (`mid = low + (high - low) / 2`), moves it to the end of the sub-array and uses it as the `pivot`.
+    3. **Lomuto partition:** the index `i` marks the border of the "smaller" zone. The index `j` scans the sub-array, and every element smaller than the pivot is swapped into that zone. Finally, the pivot is placed at position `i` — its final position in the sorted array.
+    4. The `qs` function sorts the parts `[low, p - 1]` and `[p + 1, high]` the same way.
+    5. `quick_sort(n, a)` is a wrapper that calls `qs(a, 0, n - 1)`.
