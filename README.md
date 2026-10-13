@@ -25,7 +25,8 @@ simplest-algorithms/
 ├── number-theory/
 │   ├── Sieve-of-Eratosthenes.c
 │   ├── prime_factorization.c
-│   └── pif3.c
+│   ├── pif3.c
+│   └── bin_power.c
 ├── matrices/
 │   ├── matrixfib.c
 │   └── matrixuppertriangular.c
@@ -68,19 +69,20 @@ simplest-algorithms/
 | **9** | [`number-theory/Sieve-of-Eratosthenes.c`](number-theory/Sieve-of-Eratosthenes.c) | Finding all prime numbers up to a specified limit $n$ |
 | **10** | [`number-theory/prime_factorization.c`](number-theory/prime_factorization.c) | Prime factorization of an integer |
 | **11** | [`number-theory/pif3.c`](number-theory/pif3.c) | Ternary tree generation of primitive Pythagorean triples |
+| **12** | [`number-theory/bin_power.c`](number-theory/bin_power.c) | Binary exponentiation: computing $a^n$ in $O(\log n)$ multiplications |
 
 ### 📐 Matrices
 
 | # | File | Algorithm Description |
 | :---: | :--- | :--- |
-| **12** | [`matrices/matrixfib.c`](matrices/matrixfib.c) | Fast Fibonacci number computation using matrix exponentiation |
-| **13** | [`matrices/matrixuppertriangular.c`](matrices/matrixuppertriangular.c) | Gaussian elimination method for matrix triangularization |
+| **13** | [`matrices/matrixfib.c`](matrices/matrixfib.c) | Fast Fibonacci number computation using matrix exponentiation |
+| **14** | [`matrices/matrixuppertriangular.c`](matrices/matrixuppertriangular.c) | Gaussian elimination method for matrix triangularization |
 
 ### 🔤 Strings
 
 | # | File | Algorithm Description |
 | :---: | :--- | :--- |
-| **14** | [`strings/RLE.c`](strings/RLE.c) | Run-Length Encoding (RLE) for text compression |
+| **15** | [`strings/RLE.c`](strings/RLE.c) | Run-Length Encoding (RLE) for text compression |
 
 ---
 
@@ -245,10 +247,31 @@ C = \begin{pmatrix}
 \end{pmatrix}
 $$
 
+### 12. Binary Exponentiation ([`number-theory/bin_power.c`](number-theory/bin_power.c))
+Computes $a^n$ using **binary exponentiation** (exponentiation by squaring), which needs only $O(\log n)$ multiplications instead of $n - 1$.
+
+*   **How it works:** 
+    1. The program reads the base `base` (`long long`) and the exponent `exp` (`int`). If the input is invalid or `exp < 0`, it terminates early.
+    2. The `bin_power` function starts with `res = 1` and repeats while `exp > 0`:
+        *   if `exp` is **even**, the base is squared and the exponent is halved, since $a^{2k} = (a^2)^k$;
+        *   if `exp` is **odd**, the current base is multiplied into the result and the exponent is decreased by one, since $a^{2k+1} = a \cdot a^{2k}$.
+    3. Throughout the loop the value $res \cdot base^{exp}$ stays equal to the original $a^n$, so when `exp` reaches `0`, `res` holds the answer.
+*   **Note:** the base is squared only when the exponent is even and positive, so every squared value is actually used later — there is no extra squaring after the last step.
+*   **Complexity:** $O(\log n)$ multiplications.
+*   **Constraints:** The result must fit into a signed 64-bit `long long` (from $-2^{63}$ to $2^{63} - 1$). For example, $2^{62}$, $10^{18}$ and $3^{39}$ are computed correctly, while $2^{63}$ or $3^{40}$ cause signed overflow (undefined behavior in C).
+*   **Example:**
+    ```
+    Input:
+    2 10
+
+    Output:
+    1024
+    ```
+
 
 ## 📐 Matrices
 
-### 12. Matrix Fibonacci Solver ([`matrices/matrixfib.c`](matrices/matrixfib.c))
+### 13. Matrix Fibonacci Solver ([`matrices/matrixfib.c`](matrices/matrixfib.c))
 Calculates the $n$-th Fibonacci number using **matrix exponentiation**.
 
 *   **How it works:** The relationship between adjacent Fibonacci numbers can be expressed as a clean matrix equation:
@@ -271,7 +294,7 @@ $$
 
 *   **Constraints:** Supports $0 \le n \le 91$ because the 92nd Fibonacci number exceeds the maximum safe limit of standard `long long` 64-bit signed integers in C.
 
-### 13. Matrix Upper Triangularization ([`matrices/matrixuppertriangular.c`](matrices/matrixuppertriangular.c))
+### 14. Matrix Upper Triangularization ([`matrices/matrixuppertriangular.c`](matrices/matrixuppertriangular.c))
 Transforms a square matrix into an **upper triangular matrix** using Gaussian elimination row operations.
 
 *   **How it works:** 
@@ -285,7 +308,7 @@ Transforms a square matrix into an **upper triangular matrix** using Gaussian el
 
 ## 🔤 Strings
 
-### 14. Run-Length Encoding ([`strings/RLE.c`](strings/RLE.c))
+### 15. Run-Length Encoding ([`strings/RLE.c`](strings/RLE.c))
 
 Compresses a string by replacing consecutive sequences of identical characters with the character followed by the number of repetitions.
 
