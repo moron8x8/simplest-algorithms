@@ -30,8 +30,10 @@ simplest-algorithms/
 ├── matrices/
 │   ├── matrixfib.c
 │   └── matrixuppertriangular.c
-└── strings/
-    └── RLE.c
+├── strings/
+│   └── RLE.c
+└── encryption/
+    └── caesar_cipher.c
 ```
 
 ---
@@ -83,6 +85,12 @@ simplest-algorithms/
 | # | File | Algorithm Description |
 | :---: | :--- | :--- |
 | **15** | [`strings/RLE.c`](strings/RLE.c) | Run-Length Encoding (RLE) for text compression |
+
+### 🔐 Encryption
+
+| # | File | Algorithm Description |
+| :---: | :--- | :--- |
+| **16** | [`encryption/caesar_cipher.c`](encryption/caesar_cipher.c) | Caesar cipher: shifting Latin letters by a fixed amount |
 
 ---
 
@@ -330,5 +338,30 @@ Compresses a string by replacing consecutive sequences of identical characters w
 *   **Complexity:** The algorithm processes each input character once, so its time complexity is $O(n)$, where $n$ is the input length.
 
 *   **Memory usage:** The result buffer requires additional memory for the encoded string. In the worst case, its size is approximately `2n + 1`.
+
+
+## 🔐 Encryption
+
+### 16. Caesar Cipher ([`encryption/caesar_cipher.c`](encryption/caesar_cipher.c))
+An implementation of the **Caesar cipher** — a classic substitution cipher in which every letter is replaced by the letter a fixed number of positions further down the alphabet.
+
+*   **How it works:** 
+    1. The program reads an integer `shift` from standard input and encrypts the built-in string `"The Quick Brown Fox Jumps Over The Lazy Dog"` (a pangram, so every letter of the alphabet is shifted).
+    2. **Shift normalization:** `shift %= 26` reduces the shift to the range $(-26, 26)$, and a negative result is moved into $[0, 25]$ by adding $26$. Any `int` value is accepted, including negative ones, without risk of overflow.
+    3. For each character, the `caesar_cipher` function checks whether it is an uppercase or a lowercase Latin letter and applies
+
+    $$c' = \text{base} + (c - \text{base} + \text{shift}) \bmod 26$$
+
+    where `base` is `'A'` or `'a'`. Letter case is preserved; spaces, digits and punctuation stay unchanged.
+*   **Decryption:** encrypting with the shift $-k$ (or $26 - k$) restores the original text. A shift of $13$ gives **ROT13**, which is its own inverse.
+*   **Complexity:** $O(n)$, where $n$ is the string length; the string is modified in place.
+*   **Example:**
+    ```
+    Input:
+    3
+
+    Output:
+    Wkh Txlfn Eurzq Ira Mxpsv Ryhu Wkh Odcb Grj
+    ```
 
 ---
