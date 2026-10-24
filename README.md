@@ -31,7 +31,8 @@ simplest-algorithms/
 │   ├── matrixfib.c
 │   └── matrixuppertriangular.c
 ├── strings/
-│   └── RLE.c
+│   ├── RLE.c
+│   └── deRLE.c
 └── encryption/
     ├── caesar_cipher.c
     └── vigenere_cipher.c
@@ -86,13 +87,14 @@ simplest-algorithms/
 | # | File | Algorithm Description |
 | :---: | :--- | :--- |
 | **15** | [`strings/RLE.c`](strings/RLE.c) | Run-Length Encoding (RLE) for text compression |
+| **16** | [`strings/deRLE.c`](strings/deRLE.c) | RLE decoder: restoring the original string from its encoded form |
  
 ### 🔐 Encryption
  
 | # | File | Algorithm Description |
 | :---: | :--- | :--- |
-| **16** | [`encryption/caesar_cipher.c`](encryption/caesar_cipher.c) | Caesar cipher: shifting Latin letters by a fixed amount |
-| **17** | [`encryption/vigenere_cipher.c`](encryption/vigenere_cipher.c) | Vigenère cipher: Caesar shifts driven by a repeating keyword |
+| **17** | [`encryption/caesar_cipher.c`](encryption/caesar_cipher.c) | Caesar cipher: shifting Latin letters by a fixed amount |
+| **18** | [`encryption/vigenere_cipher.c`](encryption/vigenere_cipher.c) | Vigenère cipher: Caesar shifts driven by a repeating keyword |
  
 ---
  
@@ -319,9 +321,24 @@ Compresses a string by replacing consecutive sequences of identical characters w
  
 *   **Complexity:** The algorithm processes each input character once, so its time complexity is $O(n)$, where $n$ is the input length.
 *   **Memory usage:** The result buffer requires additional memory for the encoded string. In the worst case, its size is approximately `2n + 1`.
+### 16. RLE Decoder ([`strings/deRLE.c`](strings/deRLE.c))
+The inverse operation to [`RLE.c`](strings/RLE.c): restores the original string from its **Run-Length Encoded** form.
+ 
+*   **How it works:** 
+    1. **First pass (`len_RLE`):** the encoded string is scanned group by group — one character followed by its repetition count. The counts are summed to get the exact length of the decoded string.
+    2. Memory for the result is allocated dynamically with `malloc(len + 1)` (one extra byte for `'\0'`). Unlike a Variable-Length Array on the stack, this works safely even for very long outputs such as `A1000000`.
+    3. **Second pass (`deRLE`):** for every group, the character is saved, its count is read, and the character is written into the result `count` times.
+    4. **Multi-digit counts:** the number is built digit by digit with `count = count * 10 + (digit - '0')`, so `B10` is decoded as ten `B`s, not as `B1` + `0`.
+*   **Example:**
+```
+    Input:  A3B10S3
+    Output: AAABBBBBBBBBBSSS
+```
+*   **Complexity:** $O(n + m)$, where $n$ is the length of the encoded string and $m$ is the length of the decoded one.
+*   **Constraints:** The original text must not contain digits, since in this format a digit cannot be told apart from a repetition count (`A31` is ambiguous). A character without a count is treated as repeated $0$ times.
 ## 🔐 Encryption
  
-### 16. Caesar Cipher ([`encryption/caesar_cipher.c`](encryption/caesar_cipher.c))
+### 17. Caesar Cipher ([`encryption/caesar_cipher.c`](encryption/caesar_cipher.c))
 An implementation of the **Caesar cipher** — a classic substitution cipher in which every letter is replaced by the letter a fixed number of positions further down the alphabet.
  
 *   **How it works:** 
@@ -341,7 +358,7 @@ An implementation of the **Caesar cipher** — a classic substitution cipher in 
     Wkh Txlfn Eurzq Ira Mxpsv Ryhu Wkh Odcb Grj
 ```
  
-### 17. Vigenère Cipher ([`encryption/vigenere_cipher.c`](encryption/vigenere_cipher.c))
+### 18. Vigenère Cipher ([`encryption/vigenere_cipher.c`](encryption/vigenere_cipher.c))
 An implementation of the **Vigenère cipher** — a polyalphabetic substitution cipher that generalizes the Caesar cipher: instead of one fixed shift, each letter is shifted by the corresponding letter of a repeating keyword.
  
 *   **How it works:** 
